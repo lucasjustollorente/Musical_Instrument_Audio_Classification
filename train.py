@@ -69,7 +69,7 @@ def train(args):
               'conv2d':Conv2D(**params),
               'lstm':  LSTM(**params)}
     assert model_type in models.keys(), '{} not an available model'.format(model_type)
-    csv_path = os.path.join('logs_copy', '{}_history.csv'.format(model_type))
+    csv_path = os.path.join('logs', '{}_history.csv'.format(model_type))
 
     wav_paths = glob('{}/**'.format(src_root), recursive=True)
     wav_paths = [x.replace(os.sep, '/') for x in wav_paths if '.wav' in x]
