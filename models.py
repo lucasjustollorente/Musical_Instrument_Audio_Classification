@@ -3,7 +3,6 @@ from tensorflow.keras.layers import TimeDistributed, LayerNormalization
 from tensorflow.keras.models import Model
 from tensorflow.keras.regularizers import l2
 import kapre
-import kagglehub
 from kapre.composed import get_melspectrogram_layer
 import tensorflow as tf
 import os
