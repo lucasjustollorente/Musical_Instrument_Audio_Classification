@@ -4,7 +4,7 @@ First of all, clone this GitHub repository in your local by running
 
 ``git clone https://github.com/fernandocarballeda/Musical_Instrument_Audio_Classification.git``
 
-in your terminal, while you are in the directory you want the repository to get created. Go inside the folder and execute the following commands to create a conda environment and install the necessary libraries:
+in your terminal, while you are in the directory you want the repository to get created. Go inside the ``Musical_Instrument_Audio_Classification`` folder and execute the following commands to create a conda environment and install the necessary libraries:
 
 ``conda create -n miac python=3.7``
 
