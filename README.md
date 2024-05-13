@@ -27,3 +27,15 @@ you can specify different params like
 ## models.py
 
 This script contains the definition of the models we will train to try to perform a good classification of the audios. It contains some models from scratch and other pretrained models. Feel free to include new models in order to get a better accuracy in the classification.
+
+## train.py
+
+This script is in charge of training the different models defined in the ``models.py`` script. It performas a train_test_split with the data contained in the ``clean`` folder.
+
+By changing the ``model_type`` parameter we can choose the model we want to train, like this:
+
+``python train.py --model_type lstm``
+
+## logs
+
+When a model is trained using the ``train.py`` script, a new file is generated in this folder, with information about the training and validation accuracy and training and validation loss for each epoch.
