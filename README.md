@@ -17,8 +17,11 @@ Here is some useful information on how to install this converter: https://phoeni
 It starts by splitting audios in ``wavfiles`` folder into smaller segments (1.0 seconds by default) and deleting those with no sound (a threshold can be specified to define what an audio with no sound is). Afterwards, the valid segments of audio are stored in ``clean`` folder divided again by musical instruments.
 
 To execute this script, run the next command in the terminal:
+
 ``python clean.py``
+
 you can specify different params like
+
 ``--delta_time`` to choose the time in seconds of the generated audios.
 
 ## models.py
