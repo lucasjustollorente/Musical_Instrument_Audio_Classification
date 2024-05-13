@@ -15,3 +15,7 @@ Here is some useful information on how to install this converter: https://phoeni
 ``clean.py`` script provides a set of tools for processing and cleaning the audio data.
 
 It starts by splitting audios in ``wavfiles`` folder into smaller segments (1.0 seconds by default) and deleting those with no sound (a threshold can be specified to define what an audio with no sound is). Afterwards, the valid segments of audio are stored in ``clean`` folder divided again by musical instruments.
+
+## models.py
+
+This script contains the definition of the models we will train to try to perform a good classification of the audios. It contains some models from scratch and other pretrained models. Feel free to include new models in order to get a better accuracy in the classification.
