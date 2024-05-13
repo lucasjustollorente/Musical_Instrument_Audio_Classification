@@ -109,3 +109,44 @@ def LSTM(N_CLASSES=10, SR=16000, DT=1.0):
                   metrics=['accuracy'])
 
     return model
+
+
+def VGGish(N_CLASSES=10, SR=16000, DT=1.0):
+    input_shape = (int(SR*DT), 1)
+    i = get_melspectrogram_layer(input_shape=input_shape,
+                                  n_mels=128,
+                                  pad_end=True,
+                                  n_fft=512,
+                                  win_length=400,
+                                  hop_length=160,
+                                  sample_rate=SR,
+                                  return_decibel=True,
+                                  input_data_format='channels_last',
+                                  output_data_format='channels_last')
+    
+    x = layers.Conv2D(64, kernel_size=(3, 3), activation='relu', padding='same', name='conv1')(i.output)
+    x = layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='pool1')(x)
+    
+    x = layers.Conv2D(128, kernel_size=(3, 3), activation='relu', padding='same', name='conv2')(x)
+    x = layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='pool2')(x)
+    
+    x = layers.Conv2D(256, kernel_size=(3, 3), activation='relu', padding='same', name='conv3/conv3_1')(x)
+    x = layers.Conv2D(256, kernel_size=(3, 3), activation='relu', padding='same', name='conv3/conv3_2')(x)
+    x = layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='pool3')(x)
+    
+    x = layers.Conv2D(512, kernel_size=(3, 3), activation='relu', padding='same', name='conv4/conv4_1')(x)
+    x = layers.Conv2D(512, kernel_size=(3, 3), activation='relu', padding='same', name='conv4/conv4_2')(x)
+    x = layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='pool4')(x)
+    
+    x = layers.Conv2D(512, kernel_size=(3, 3), activation='relu', padding='same', name='conv5/conv5_1')(x)
+    x = layers.Conv2D(512, kernel_size=(3, 3), activation='relu', padding='same', name='conv5/conv5_2')(x)
+    x = layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same', name='pool5')(x)
+    
+    x = layers.Flatten(name='flatten')(x)
+    x = layers.Dense(4096, activation='relu', name='fc6')(x)
+    x = layers.Dense(4096, activation='relu', name='fc7')(x)
+    x = layers.Dense(N_CLASSES, activation='softmax', name='fc8')(x)
+    
+    model = Model(inputs=i.input, outputs=x, name='vggish')
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    return model
