@@ -4,6 +4,7 @@ import tensorflow_hub as hub
 import numpy as np
 from sklearn.model_selection import train_test_split
 from scipy.io import wavfile
+from tensorflow.keras.callbacks import CSVLogger, ModelCheckpoint
 
 # Step 1: Prepare the Dataset
 src_root = 'clean'
@@ -49,4 +50,9 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 train_labels = [labels.index(os.path.split(os.path.dirname(file))[-1]) for file in train_files]
 val_labels = [labels.index(os.path.split(os.path.dirname(file))[-1]) for file in val_files]
 
-model.fit(train_features, train_labels, epochs=10, batch_size=32, validation_data=(val_features, val_labels))
+# Callbacks
+model_checkpoint = ModelCheckpoint('models/vggish.h5', monitor='val_loss', save_best_only=True)
+csv_logger = CSVLogger('logs/vggish_history.csv')
+
+# Training
+model.fit(train_features, train_labels, epochs=10, batch_size=32, validation_data=(val_features, val_labels), callbacks=[model_checkpoint, csv_logger])
