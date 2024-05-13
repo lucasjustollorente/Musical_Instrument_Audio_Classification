@@ -1,5 +1,13 @@
 # Musical_Instrument_Audio_Classification
 
+First of all, clone this GitHub repository in your local by running
+
+
+
+conda create -n miac python=3.7
+activate miac
+pip install -r requirements.txt
+
 ## wavfiles
 
 ``wavfiles`` folder contains audios in .wav format of different musical instruments.
