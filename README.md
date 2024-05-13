@@ -12,6 +12,8 @@ in your terminal, while you are in the directory you want the repository to get 
 
 ``pip install -r requirements.txt``
 
+Now, you can open Jupyter or Visual Studio Code to start looking and using the content.
+
 ## wavfiles
 
 ``wavfiles`` folder contains audios in .wav format of different musical instruments.
