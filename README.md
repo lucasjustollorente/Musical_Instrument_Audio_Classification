@@ -11,3 +11,7 @@ If we want to add more data to this folder we have to download from the Internet
 Here is some useful information on how to install this converter: https://phoenixnap.com/kb/ffmpeg-windows
 
 ## clean.py
+
+``clean.py`` script provides a set of tools for processing and cleaning the audio data.
+
+It starts by splitting audios in ``wavfiles`` folder into smaller segments (1.0 seconds by default) and deleting those with no sound. Afterwards, the valid segments of audio are stored in ``clean`` folder divided again by musical instruments.
