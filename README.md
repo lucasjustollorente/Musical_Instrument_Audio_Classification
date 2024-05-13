@@ -8,7 +8,9 @@ in your terminal, while you are in the directory you want the repository to get 
 
 ``
 conda create -n miac python=3.7
+
 activate miac
+
 pip install -r requirements.txt
 ``
 
