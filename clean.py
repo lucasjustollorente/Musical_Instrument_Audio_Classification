@@ -28,6 +28,7 @@ def delete_silent_files(directory):
                     print(f"Deleted: {file_path}")
 
 
+
 def envelope(y, rate, threshold):
     mask = []
     y = pd.Series(y).apply(np.abs)
